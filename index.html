@@ -32,77 +32,129 @@
 
 <div class="container">
   <div class="row">
-   <div class="pos-f-t col-8">
-     <div class="collapse" id="navbarToggleExternalContent">
-       <div class="bg-dark p-4">
-         <h5 class="text-white h4">Collapsed content</h5>
-         <span class="text-muted">Toggleable via the navbar brand.</span>
-       </div>
-     </div>
-     <nav class="navbar navbar-dark bg-dark">
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-     </nav>
-   </div>
+    <div class="pos-f-t col-8">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h5 class="text-white h4">Collapsed content</h5>
+          <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+    </div>
 
-   <div class="pos-f-t col-4">
-      <!--maps/or feed go in here-->
-   </div>
-
-
-   <div class="row">
-     <table class="table table-hover col-8">
-       <thead>
-         <tr>
-           <th scope="col">#</th>
-           <th scope="col">First</th>
-           <th scope="col">Last</th>
-           <th scope="col">Handle</th>
-         </tr>
-       </thead>
-    <tbody>
-        <tr>
-          <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            </tr>
-        <tr>
-          <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div class="pos-f-t col-4">
+        <!--maps/or feed go in here-->
+    </div>
   </div>
 
 
+  <div class="row">
+    <table id="roster" class="table table-hover table-responsive col-8">
+      <thead>
+        <tr>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Grade</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
 
+  <div class="row">
+    <table id="schedule" class="table table-hover table-responsive col">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Opponent</th>
+          <th scope="col">Time</th>
+          <th scope="col">Location</th>
+          <th scope="col">Notes</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Form to add a player -->
+  <!-- Move this form to a new page -->
+  <br><br><br>
+  <div class="row">
+    <div class="col">
+    <div class = 'title'>Add Player</div>
+    <div id = 'addPlayer'>
+        <form>
+        First Name:<br>
+        <input type="text" name="firstName" onfocus="this.value=''" value="First Name" class="tableEntry" id="firstName">
+        <br>
+        Last Name:<br>
+        <input type="text" name="lastName" onfocus="this.value=''" value="Last Name" class="tableEntry" id="lastName">
+        <br>
+        Grade:<br>
+        <input type="text" name="grade" value="" onfocus="this.value=''" class="tableEntry" id="grade">
+        <br>
+        Handle:<br>
+        <input type="text" name="handle" value="" onfocus="this.value=''" class="tableEntry" id="handle">
+        <br><br>
+        <input type="submit" value="Submit" id="player">
+        </form> 
+    </div>
+  </div>
+  </div>
+
+  <!-- Form to add match to schedule -->
+  <!-- Move to a new page -->
+  <br><br><br>
+  <div class="row">
+    <div class="col">
+    <div class = 'title'>Add Match</div>
+    <div id = 'addMatch'>
+        <form>
+        Date:<br>
+        <input type="text" name="Date" onfocus="this.value=''" value="Date" class="tableEntry" id="date">
+        <br>
+        Opponent:<br>
+        <input type="text" name="Opponent" onfocus="this.value=''" value="Opponent" class="tableEntry" id="opponent">
+        <br>
+        Time:<br>
+        <input type="text" name="Time" value="hh:mm a" onfocus="this.value=''" class="tableEntry" id="time">
+        <br>
+        Location:<br>
+        <input type="text" name="Location" value="Location" onfocus="this.value=''" class="tableEntry" id="location">
+        <br>
+        Notes:<br>
+        <input type="text" name="Notes" value="i.e. Tournament" onfocus="this.value=''" class="tableEntry" id="notes">
+        <br>
+        Score:<br>
+        <input type="text" name="Score" value="" onfocus="this.value=''" class="tableEntry" id="score">
+        <br><br>
+        <input type="submit" value="Submit" id="match">
+        </form> 
+    </div>
+  </div>
+  </div>
 
 
 </div>
 
 
-
-
-
-
-<!--Custom Javascript-->
-<script type="text/javascript" src="assets/javascript/app.js"></script>
-<!--jQuery 3.3.1  https://developers.google.com/speed/libraries/#jquery  -->
+<!--jQuery 3.3.1 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--Bootstrap JS-->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+<!--Custom Javascript-->
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 
 </body>
 </html>
