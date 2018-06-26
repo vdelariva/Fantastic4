@@ -68,33 +68,48 @@ var config = {
     
     // Player added to database
     database.ref("roster/").on("child_added", function(snapshot){ 
-        console.log("roster: "+JSON.stringify(snapshot))
-        console.log("first name:"+ snapshot.val().firstName)  
+        // console.log("roster: "+JSON.stringify(snapshot))
+        // console.log("first name:"+ snapshot.val().firstName)  
     
         // Display team player
-        $("#roster > tbody").append("<tr>" 
+        $("#roster > tbody").append("<tr id="+snapshot.key+">" 
         + "<td>" + snapshot.val().firstName + "</td>" 
         + "<td>" + snapshot.val().lastName + "</td>" 
         + "<td>" + parseInt(snapshot.val().grade) + "</td>" 
-        + "<td>" + snapshot.val().handle + "</td>")
+        + "<td>" + snapshot.val().handle + "</td>"
+        + "<td><i class='far fa-trash-alt rtrash' data-key="+snapshot.key+"></i></tr>")
     });
     
     // Match added to database
     database.ref("schedule/").on("child_added", function(snapshot){ 
-        console.log("schedule: "+JSON.stringify(snapshot))
-        console.log("opponent:"+ snapshot.val().opponent)  
+        // console.log("schedule: "+JSON.stringify(snapshot))
+        // console.log("opponent:"+ snapshot.val().opponent)  
     
         // Display team schedule
-        $("#schedule > tbody").append("<tr>" 
+        $("#schedule > tbody").append("<tr id="+snapshot.key+">" 
         + "<td>" + snapshot.val().date + "</td>" 
         + "<td>" + snapshot.val().opponent + "</td>" 
         + "<td>" + snapshot.val().time + "</td>" 
         + "<td>" + snapshot.val().location + "</td>"
         + "<td>" + snapshot.val().notes + "</td>"
-        + "<td>" + snapshot.val().score + "</td>")
+        + "<td>" + snapshot.val().score + "</td>"
+        + "<td><i class='far fa-trash-alt strash' data-key="+snapshot.key+"></i></tr>")
     });
     
+    $(document).on("click",".strash", function(event) {
+        let currKey = $(this).attr("data-key");
+        let scheduleRef=database.ref("schedule/"+currKey);
+        scheduleRef.remove();
+        $("#"+currKey).remove();
+    });
     
+    $(document).on("click",".rtrash", function(event) {
+        let currKey = $(this).attr("data-key");
+        let rosterRef=database.ref("roster/"+currKey);
+        rosterRef.remove();
+        $("#"+currKey).remove();
+    });
+
     // Action.com api
     var originalURL = "https://api.amp.active.com/v2/search/?city=minneapolis&query=tennis&current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=ja8qanb9v23rmxsqpb26ad93";
     var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
