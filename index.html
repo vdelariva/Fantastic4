@@ -23,67 +23,81 @@
 
 </head>
 <body>
-
+<!--Jumbotron-->
   <div class="jumbotron jumbotron-fluid" id="jumbotron">
     <div class="container">
       <img src="assets/images/white-logo.png" id="logo">
     </div>
   </div>
 
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg" id="nav" style="background-color: #42454a;">
+  <a class="navbar-brand">Washburn Tennis //</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<!--Navbar-->
+<div class="collapse navbar-collapse" id="navbarText">
+  <ul class="navbar-nav mr-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="teammanager.html">Admin Login</a>
+    </li>
+  </ul>
+</div>
+</nav>
+
+<!---->
 <div class="container">
   <div class="row">
-    <div class="pos-f-t col-8">
-      <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h5 class="text-white h4">Collapsed content</h5>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
-        </div>
+    <div class="col-md">
+      <div class="table-responsive">
+        <table id="roster" class="table table-hover">
+          <thead>
+            <tr>
+              <th>First</th>
+              <th>Last</th>
+              <th>Grade</th>
+              <th>Handle</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     </div>
 
-    <!--Nav bar -->
-
-    <div class="pos-f-t col-4">
-        <!--maps/or feed go in here-->
+    <div class="col-md">
+      <h4 class="lesson-title">Tennis Lessons</h4>
+      <iframe width="400" height="230" src='https://www.youtube.com/embed/aZj7DIEftPg?autoplay=1'></iframe>
     </div>
   </div>
+</div>
 
-
+<div class="container">
   <div class="row">
-    <table id="roster" class="table table-hover table-responsive col-8">
+
+    <table id="schedule" class="table table-hover table-responsive col-6">
       <thead>
         <tr>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Grade</th>
-          <th scope="col">Handle</th>
+          <th>Date</th>
+          <th>Opponent</th>
+          <th>Time</th>
+          <th>Location</th>
+          <th>Notes</th>
+          <th>Score</th>
         </tr>
       </thead>
-      <tbody>
-      </tbody>
+      <tbody></tbody>
     </table>
+
+    <div class="col-4">
+    </div>
+
   </div>
-
-  <div class="row">
-    <table id="schedule" class="table table-hover table-responsive col">
-      <thead>
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Opponent</th>
-          <th scope="col">Time</th>
-          <th scope="col">Location</th>
-          <th scope="col">Notes</th>
-          <th scope="col">Score</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
-
-
-  <iframe width="420" height="315" src='https://www.youtube.com/embed/aZj7DIEftPg?autoplay=1'></iframe>
-
 </div>
 
 
