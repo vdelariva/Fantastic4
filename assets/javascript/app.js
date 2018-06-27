@@ -110,6 +110,17 @@ var config = {
         $("#"+currKey).remove();
     });
 
+    // hides video player on any click other than link
+    $(document).mouseup(function(e) {
+	    var hideItem = $(".vid_btn");
+	
+	    // if the target of the click isn't the container nor a descendant of the container
+	    if (!hideItem.is(e.target) && hideItem.has(e.target).length === 0) 
+	    {
+	        $("iframe").hide(400);
+	    }
+	});	
+
     // Action.com api
     var currentDate = formatDate(new Date());
     var originalURL = "https://api.amp.active.com/v2/search/?near=minneapolis&query=usta+tournament+boy&per_page=3&sort=distance&start_date=" + currentDate + "..&exclude_children=true&api_key=ja8qanb9v23rmxsqpb26ad93";
@@ -123,17 +134,51 @@ var config = {
         "x-requested-with": "xhr",
       }
     }).done(function(response) {
-      console.log('CORS anywhere response', response);
+      //console.log('CORS anywhere response', response);
       $("#event_container").append(eventOutput(response));
     }).fail(function(jqXHR, textStatus) {
-      console.error(textStatus)
+      console.error(textStatus);
     })
+
+    //youtube api
+    var vidRequest;
+    var searchObj = {
+        part: 'snippet',
+        maxResults: 10,
+        q: ""
+    }
+    $("iframe").hide();
+    $(".vid_btn").click(function(){
+        searchObj.q = $(this).attr("data-term");
+        keyWordsearch();
+    });
+
+   function keyWordsearch(){
+       var queryURL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAr_9T1FB9rcmFjmGFVQHobhyNUxyKFswE"
+
+       // Creates AJAX call for the specific gif theme button being clicked
+       $.ajax({
+       url: queryURL,
+       method: "GET",
+       data: searchObj
+       }).then(function(response) {
+       //console.log('runs')
+       //console.log(response);
+       var randomVid = Math.floor(Math.random() * 10);
+       var randomVidId = response.items[randomVid].id.videoId;
+       var vidSrc = `https://www.youtube.com/embed/${randomVidId}?autoplay=1`;
+       $("iframe").attr("src", vidSrc);
+       $("iframe").show();
+       }).catch(function(err) {
+       console.log(err)
+       })
+   }
+
 
 //output the event data to a ul to hold the info
     function eventOutput(data) {
         var output = $('<ul> class="event_holder"');
         data.results.forEach(function(item){
-            console.log(item.assetName);
             var startDate = item.activityStartDate.split('T')[0];
             var prettyDate = moment(startDate).format("MMM Do, YYYY"); 
             var liTitle = $('<li class="event_title">');

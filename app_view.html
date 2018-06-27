@@ -33,15 +33,40 @@
             text-decoration: none;
             color: #e67e22;
         }
+
+        .vid_btn {
+            width: 200px;
+            background: #e67e22;
+            height: 50px;
+            text-align: center;
+            color: white;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .vid_btn:hover {
+            font-weight: bold;
+        }
     </style>
 
 </head>
 
 <body>
 
-<div id = "event_container">
+    <div id = "event_container"></div>
+    <iframe width="420" height="315"></iframe>
+    <div id="buttons">
+        <!-- <label> <input id="query" value='' type="text"/><button id="search-button"   onclick="keyWordsearch()">Search</button></label>    
+        <div id="container">
+            <h1>Search Results</h1>
+            <ul id="results"></ul> -->
 
-</div>
+        <p class="vid_btn" data-term="tennis forehand">Forehand</p>
+        <p class="vid_btn" data-term="tennis backhand">Backhand</p> 
+        <p class="vid_btn" data-term="tennis volley">Volley</p>
+        <p class="vid_btn" data-term="tennis serve">Serve</p>
+    </div>   
+        
 
 
     <!--jQuery 3.3.1 -->
