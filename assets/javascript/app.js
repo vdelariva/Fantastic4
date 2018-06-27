@@ -111,9 +111,9 @@ var config = {
     });
 
     // Action.com api
-    var originalURL = "https://api.amp.active.com/v2/search/?city=minneapolis&query=tennis&current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=ja8qanb9v23rmxsqpb26ad93";
+    var currentDate = formatDate(new Date());
+    var originalURL = "https://api.amp.active.com/v2/search/?near=minneapolis&query=usta+tournament+boy&per_page=3&sort=distance&start_date=" + currentDate + "..&exclude_children=true&api_key=ja8qanb9v23rmxsqpb26ad93";
     var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
-    
     $.ajax({
       url: queryURL,
       method: "GET",
@@ -124,6 +124,42 @@ var config = {
       }
     }).done(function(response) {
       console.log('CORS anywhere response', response);
+      $("#event_container").append(eventOutput(response));
     }).fail(function(jqXHR, textStatus) {
       console.error(textStatus)
     })
+
+//output the event data to a ul to hold the info
+    function eventOutput(data) {
+        var output = $('<ul> class="event_holder"');
+        data.results.forEach(function(item){
+            console.log(item.assetName);
+            var startDate = item.activityStartDate.split('T')[0];
+            var prettyDate = moment(startDate).format("MMM Do, YYYY"); 
+            var liTitle = $('<li class="event_title">');
+            var liLink = $('<a>');
+            liLink.attr("class", "event_link");
+            liLink.attr("href", item.homePageUrlAdr);
+            liLink.attr('target','_blank');
+            liLink.text(item.assetName);
+            liTitle.append(liLink);
+            var liPlace = $('<li class="event_place">').text(item.place.cityName + ", " + item.place.stateProvinceCode);
+            var liDate = $('<li class="event_date">').text(prettyDate);
+            output.append(liTitle);
+            output.append(liPlace);
+            output.append(liDate);
+        });
+        return output;
+    }
+//need to pass in the query todays date
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
