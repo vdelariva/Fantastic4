@@ -46,7 +46,22 @@
 
         .vid_btn:hover {
             font-weight: bold;
+            background: #e26e07;
         }
+
+        #instagram_feed {
+            width: 100%;
+        }
+
+        .insta_image {
+            max-width: 100%;
+        }
+
+       .img_holder  li   {
+            display: inline-block;
+            width: 20%;
+        }
+
     </style>
 
 </head>
@@ -55,17 +70,15 @@
 
     <div id = "event_container"></div>
     <iframe width="420" height="315"></iframe>
-    <div id="buttons">
-        <!-- <label> <input id="query" value='' type="text"/><button id="search-button"   onclick="keyWordsearch()">Search</button></label>    
-        <div id="container">
-            <h1>Search Results</h1>
-            <ul id="results"></ul> -->
 
+    <div id="buttons">
         <p class="vid_btn" data-term="tennis forehand">Forehand</p>
         <p class="vid_btn" data-term="tennis backhand">Backhand</p> 
         <p class="vid_btn" data-term="tennis volley">Volley</p>
         <p class="vid_btn" data-term="tennis serve">Serve</p>
-    </div>   
+    </div>
+
+    <div id="instagram_feed"></div>
         
 
 

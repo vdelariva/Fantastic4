@@ -110,18 +110,22 @@ var config = {
         $("#"+currKey).remove();
     });
 
-    // hides video player on any click other than link
+    // hides video player and stops it on any click other than link
     $(document).mouseup(function(e) {
 	    var hideItem = $(".vid_btn");
 	
 	    // if the target of the click isn't the container nor a descendant of the container
 	    if (!hideItem.is(e.target) && hideItem.has(e.target).length === 0) 
 	    {
-	        $("iframe").hide(400);
+            $("iframe").hide(400);
+            $("iframe").attr("src", "");
 	    }
 	});	
 
-    // Action.com api
+// Action.com api
+//------------------------------------------------------------------------------
+
+
     var currentDate = formatDate(new Date());
     var originalURL = "https://api.amp.active.com/v2/search/?near=minneapolis&query=usta+tournament+boy&per_page=3&sort=distance&start_date=" + currentDate + "..&exclude_children=true&api_key=ja8qanb9v23rmxsqpb26ad93";
     var queryURL = "https://cors-anywhere.herokuapp.com/" + originalURL
@@ -140,7 +144,9 @@ var config = {
       console.error(textStatus);
     })
 
-    //youtube api
+// Youtube api
+//------------------------------------------------------------------------------
+
     var vidRequest;
     var searchObj = {
         part: 'snippet',
@@ -152,6 +158,49 @@ var config = {
         searchObj.q = $(this).attr("data-term");
         keyWordsearch();
     });
+
+
+// instagram api
+//-------------------------------------------------------------------------------
+
+
+    
+        $.ajax({
+            url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
+            dataType: 'jsonp',
+            type: 'GET',
+            success: function(data){
+                 console.log(data.data.length);
+                var startImagesAvail = data.data.length;
+                $("#instagram_feed").append(imageOutput(data.data));
+                setInterval(function() {
+                    $.ajax({
+                        url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
+                        dataType: 'jsonp',
+                        type: 'GET',
+                        success: function(data){
+                             console.log("from the interval" + data.data.length);
+                             var newImages = data.data.length;
+                            console.log("start img: " + startImagesAvail);
+                            console.log(newImages);
+                            
+                            
+                        },
+                        error: function(data){
+                            console.log(err); // send the error notifications to console
+                        }
+                    });
+                    
+                }, 10000);
+            },
+            error: function(data){
+                console.log(err); // send the error notifications to console
+            }
+        });
+
+
+        
+
 
    function keyWordsearch(){
        var queryURL = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyAr_9T1FB9rcmFjmGFVQHobhyNUxyKFswE"
@@ -208,3 +257,19 @@ var config = {
     
         return [year, month, day].join('-');
     }
+
+    function imageOutput(data) {
+        var output = $('<ul class="img_holder">');
+        data.forEach(function(item){
+            //console.log(item.images.standard_resolution.url);
+            var liImage = $('<li>');
+            var liImg = $('<img class="insta_image">');
+            liImg.attr("src", item.images.standard_resolution.url);
+            liImage.prepend(liImg);
+            output.prepend(liImage);
+        });
+        return output;
+    }
+
+
+    //instagram token = 2990260460.3146e20.78ee043027df4f24932d8eecb70e0316
