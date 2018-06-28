@@ -163,43 +163,17 @@ var config = {
 // instagram api
 //-------------------------------------------------------------------------------
 
-
+        var newImages = 0;
     
         $.ajax({
             url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
             dataType: 'jsonp',
             type: 'GET',
-            success: function(data){
-                 console.log(data.data.length);
-                var startImagesAvail = data.data.length;
-                $("#instagram_feed").append(imageOutput(data.data));
-                setInterval(function() {
-                    $.ajax({
-                        url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
-                        dataType: 'jsonp',
-                        type: 'GET',
-                        success: function(data){
-                             console.log("from the interval" + data.data.length);
-                             var newImages = data.data.length;
-                            console.log("start img: " + startImagesAvail);
-                            console.log(newImages);
-                            
-                            
-                        },
-                        error: function(data){
-                            console.log(err); // send the error notifications to console
-                        }
-                    });
-                    
-                }, 10000);
-            },
+            success: refreshImg,
             error: function(data){
                 console.log(err); // send the error notifications to console
             }
         });
-
-
-        
 
 
    function keyWordsearch(){
@@ -271,5 +245,28 @@ var config = {
         return output;
     }
 
-
-    //instagram token = 2990260460.3146e20.78ee043027df4f24932d8eecb70e0316
+    function refreshImg(data) {
+            console.log(data.data.length);
+           var startImagesAvail = data.data.length;
+           $("#instagram_feed").append(imageOutput(data.data));
+           setInterval(function() {
+               $.ajax({
+                   url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
+                   dataType: 'jsonp',
+                   type: 'GET',
+                   success: function(data){
+                        console.log("from the interval" + data.data.length);
+                        
+                       console.log("start img: " + startImagesAvail);
+                       console.log(newImages);
+                           $("#instagram_feed").empty();
+                           $("#instagram_feed").append(imageOutput(data.data));
+                   },
+                   error: function(data){
+                       console.log(err); // send the error notifications to console
+                   }
+               });
+               
+           }, 10000);
+       }
+    
