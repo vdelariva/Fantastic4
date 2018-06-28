@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--Update title here-->
-  <title>Washburn Tennis</title>
+  <title>Washburn Tennis | Admin</title>
   <!--CSS Reset-->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <!--Third Party CSS link-->
@@ -16,106 +16,104 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="shortcut icon" type="image/png" href="assets/images/flavicon.png"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
   <!--Firebase web App scrypt-->
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
+
 </head>
 <body>
-
+<!--Jumbotron-->
   <div class="jumbotron jumbotron-fluid" id="jumbotron">
     <div class="container">
       <img src="assets/images/white-logo.png" id="logo">
     </div>
   </div>
 
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-lg" id="nav" style="background-color: #42454a;">
-    <a class="navbar-brand">Washburn Tennis //</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  <!--Navbar-->
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg" id="nav" style="background-color: #42454a;">
+  <a class="navbar-brand" href="index.html">Washburn Tennis //</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">Home</a>
-      </li>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="teammanager.html">Admin Login</a>
+    </li>
+  </ul>
+</div>
+</nav>
 
-      <li class="nav-item">
-        <a class="nav-link" href="teammanager.html">Admin Login</a>
-      </li>
-    </ul>
-  </div>
-  </nav>
-
-  <!-- Form to add a player -->
-  <br><br><br>
-  <div class="row">
-    <div class="col">
-    <div class = 'title'>Add Player</div>
-    <div id = 'addPlayer'>
-        <form>
-        First Name:<br>
-        <input type="text" name="firstName" onfocus="this.value=''" value="First Name" class="tableEntry" id="firstName">
-        <br>
-        Last Name:<br>
-        <input type="text" name="lastName" onfocus="this.value=''" value="Last Name" class="tableEntry" id="lastName">
-        <br>
-        Grade:<br>
-        <input type="text" name="grade" value="" onfocus="this.value=''" class="tableEntry" id="grade">
-        <br>
-        Handle:<br>
-        <input type="text" name="handle" value="" onfocus="this.value=''" class="tableEntry" id="handle">
-        <br><br>
-        <input type="submit" value="Submit" id="player">
-        </form>
+<!-- Form to add a player -->
+<div class="container">
+    <div class="row">
+      <div class="col">
+      <div class = 'title'>Add Player</div>
+      <div id = 'addPlayer'>
+          <form>
+          First Name:<br>
+          <input type="text" name="firstName" onfocus="this.value=''" value="First Name" class="tableEntry" id="firstName">
+          <br>
+          Last Name:<br>
+          <input type="text" name="lastName" onfocus="this.value=''" value="Last Name" class="tableEntry" id="lastName">
+          <br>
+          Grade:<br>
+          <input type="text" name="grade" value="" onfocus="this.value=''" class="tableEntry" id="grade">
+          <br>
+          Handle:<br>
+          <input type="text" name="handle" value="" onfocus="this.value=''" class="tableEntry" id="handle">
+          <br><br>
+          <input type="submit" value="Submit" id="player">
+          </form>
+      </div>
     </div>
   </div>
-  </div>
 
-  <!-- Form to add match to schedule -->
-  <br><br><br>
+<!-- Form to add match to schedule -->
+<br><br><br>
   <div class="row">
     <div class="col">
     <div class = 'title'>Add Match</div>
     <div id = 'addMatch'>
         <form>
-        Date:<br>
-        <input type="text" name="Date" onfocus="this.value=''" value="Date" class="tableEntry" id="date">
-        <br>
-        Opponent:<br>
-        <input type="text" name="Opponent" onfocus="this.value=''" value="Opponent" class="tableEntry" id="opponent">
-        <br>
-        Time:<br>
-        <input type="text" name="Time" value="hh:mm a" onfocus="this.value=''" class="tableEntry" id="time">
-        <br>
-        Location:<br>
-        <input type="text" name="Location" value="Location" onfocus="this.value=''" class="tableEntry" id="location">
-        <br>
-        Notes:<br>
-        <input type="text" name="Notes" value="i.e. Tournament" onfocus="this.value=''" class="tableEntry" id="notes">
-        <br>
-        Score:<br>
-        <input type="text" name="Score" value="" onfocus="this.value=''" class="tableEntry" id="score">
-        <br><br>
-        <input type="submit" value="Submit" id="match">
+          <div class="form-group">
+          Date:<br>
+          <input type="text" name="Date" onfocus="this.value=''" value="Date" class="tableEntry" id="date">
+          <br>
+          Opponent:<br>
+          <input type="text" name="Opponent" onfocus="this.value=''" value="Opponent" class="tableEntry" id="opponent">
+          <br>
+          Time:<br>
+          <input type="text" name="Time" value="hh:mm a" onfocus="this.value=''" class="tableEntry" id="time">
+          <br>
+          Location:<br>
+          <input type="text" name="Location" value="Location" onfocus="this.value=''" class="tableEntry" id="location">
+          <br>
+          Notes:<br>
+          <input type="text" name="Notes" value="i.e. Tournament" onfocus="this.value=''" class="tableEntry" id="notes">
+          <br>
+          Score:<br>
+          <input type="text" name="Score" value="" onfocus="this.value=''" class="tableEntry" id="score">
+          <br><br>
+          <input type="submit" value="Submit" id="match">
         </form>
     </div>
   </div>
   </div>
+</div>
+</div>
+<!--[ footer ] -->
+<div id="footer">
+    <div class="container">
+        <p class="footer-block">Copyright &copy The Fantastic4 2018</p>
+    </div>
+</div>
 
 
-
-
-
-
-
-
-
-
-  <!--jQuery 3.3.1 -->
+<!--jQuery 3.3.1 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 <!--Bootstrap JS-->
