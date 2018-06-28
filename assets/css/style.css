@@ -1,35 +1,19 @@
 body {
   background-image: url(../images/white-logo.png);
-  background-size: cover;
+  background-size: contain;
   background-color: #f6f6f6;
-  height: 1500px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 tr {
   background-color: #ffffff;
 }
 
-#jumbotron {
-  height: 375px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  text-align: center;
-  background-color: #f26c23;
-  margin: 0px;
-}
-
-#logo {
-  height: 300px;
-  margin: -30px 0px 0px 0px;
-
-}
-
 a.nav-link {
   color: #a3a3a3;
 }
 
-#nav {
+a.navbar-brand {
   color: #ffffff;
 }
 
@@ -39,6 +23,50 @@ a.nav-link {
   background-color: #f26C23;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
+  color: #ffffff;
+}
+
+#lessons {
+  margin-top: 50px;
+  padding: 14px 0px 12px 20px;
+  background-color: #42454a;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  color: #ffffff;
+  width: 400px;
+  margin-bottom: 0px;
+}
+
+#footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #2957a7;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  margin-top: 80px;
+  }
+
+#schedule-title{
+  margin-top: 0px;
+}
+
+#jumbotron {
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  background-image: url(../images/patternbanner.jpg);
+  margin: 0px;
+}
+
+#logo {
+  height: 300px;
+  margin: -30px 0px 0px 0px;
+}
+
+#nav {
   color: #ffffff;
 }
 
@@ -54,13 +82,4 @@ a.nav-link {
 #news {
   width: 400px;
   margin-top: 20px;
-}
-
-#news-text-area {
-  width: 400px;
-}
-
-
-iframe {
-  margin-top: 50px;
 }
