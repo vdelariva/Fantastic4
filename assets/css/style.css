@@ -64,3 +64,22 @@ a.nav-link {
 iframe {
   margin-top: 50px;
 }
+
+.hover-outline:hover {
+  outline: 5px solid #f26C23;
+  outline-offset: 5px;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #3a489c;
+  color: white;
+}
+.modal-header, .modal-footer {
+  background-color: #d2d2d2;
+}
+.modal-body {
+  background-image: url(../images/white-logo.png);
+  background-color: #f6f6f6;
+
+}

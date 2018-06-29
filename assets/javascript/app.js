@@ -44,6 +44,7 @@ var config = {
             grade: newPlayer.grade,
             handle: newPlayer.handle
         })
+        $("form").trigger("reset");
     });
     
     // Capture Add Match Button Click
@@ -64,12 +65,11 @@ var config = {
             notes: newMatch.notes,
             score: newMatch.score
         })
+        $("form").trigger("reset");
     });
     
     // Player added to database
     database.ref("roster/").on("child_added", function(snapshot){ 
-        // console.log("roster: "+JSON.stringify(snapshot))
-        // console.log("first name:"+ snapshot.val().firstName)  
     
         // Display team player
         $("#roster > tbody").append("<tr id="+snapshot.key+">" 
@@ -77,13 +77,11 @@ var config = {
         + "<td>" + snapshot.val().lastName + "</td>" 
         + "<td>" + parseInt(snapshot.val().grade) + "</td>" 
         + "<td>" + snapshot.val().handle + "</td>"
-        + "<td><i class='far fa-trash-alt rtrash' data-key="+snapshot.key+"></i></tr>")
+        + "<td><i class='far fa-edit edit redit hover-outline' data-toggle='modal' data-target='#myModal' data-key="+snapshot.key+"></i></td></tr>")
     });
     
     // Match added to database
     database.ref("schedule/").on("child_added", function(snapshot){ 
-        // console.log("schedule: "+JSON.stringify(snapshot))
-        // console.log("opponent:"+ snapshot.val().opponent)  
     
         // Display team schedule
         $("#schedule > tbody").append("<tr id="+snapshot.key+">" 
@@ -93,22 +91,159 @@ var config = {
         + "<td>" + snapshot.val().location + "</td>"
         + "<td>" + snapshot.val().notes + "</td>"
         + "<td>" + snapshot.val().score + "</td>"
-        + "<td><i class='far fa-trash-alt strash' data-key="+snapshot.key+"></i></tr>")
+        + "<td><i class='far fa-edit edit sedit hover-outline' data-toggle='modal' data-target='#myModal' data-key="+snapshot.key+"></i></td></tr>")
     });
     
-    $(document).on("click",".strash", function(event) {
+    // Edit the team schedule
+    $(document).on("click",".sedit", function(event) {
+        event.preventDefault();
         let currKey = $(this).attr("data-key");
         let scheduleRef=database.ref("schedule/"+currKey);
-        scheduleRef.remove();
-        $("#"+currKey).remove();
+
+        scheduleRef.once("value", function(data){
+        // Display the modal form for editing matches
+        $(".modal-title").text("Edit Player");
+        $(".modal-body").html("<form>"
+            +"<div class='form-group'>"
+            +"<label for='date' class='col-form-label'>Date:</label>"
+            +"<input type='text' class='form-control' id='date' value="+data.val().date+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='opponent' class='col-form-label'>Opponent:</label>"
+            +"<input type='text' class='form-control' id='opponent' value="+data.val().opponent+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='time' class='col-form-label'>Time:</label>"
+            +"<input type='text' class='form-control' id='time' value="+data.val().time+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='location' class='col-form-label'>Location:</label>"
+            +"<input type='text' class='form-control' id='location' value="+data.val().location+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='notes' class='col-form-label'>Notes:</label>"
+            +"<input type='text' class='form-control' id='notes' value="+data.val().notes+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='score' class='col-form-label'>Score:</label>"
+            +"<input type='text' class='form-control' id='score' value="+data.val().score+">"
+            +"</div>");
+            console.log("score: "+data.val().score)
+
+        })
+
+        $("#saveChanges").attr("data-key",currKey);
+        $("#saveChanges").attr("data-tableType","schedule/");
+        $("#delete").attr("data-key",currKey)
+        $("#delete").attr("data-tableType","schedule/");
     });
     
-    $(document).on("click",".rtrash", function(event) {
+    // Edit the team roster
+    $(document).on("click",".redit", function(event) {
+        event.preventDefault();
         let currKey = $(this).attr("data-key");
         let rosterRef=database.ref("roster/"+currKey);
-        rosterRef.remove();
-        $("#"+currKey).remove();
+
+        rosterRef.once("value", function(data){
+        // Display the modal form for editing players
+        $(".modal-title").text("Edit Match");
+        $(".modal-body").html("<form>"
+            +"<div class='form-group'>"
+            +"<label for='firstName' class='col-form-label'>First Name:</label>"
+            +"<input type='text' class='form-control' id='firstName' value="+data.val().firstName+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='lastName' class='col-form-label'>Last Name:</label>"
+            +"<input type='text' class='form-control' id='lastName' value="+data.val().lastName+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='grade' class='col-form-label'>Grade:</label>"
+            +"<input type='text' class='form-control' id='grade' value="+data.val().grade+">"
+            +"</div>"
+            +"<div class='form-group'>"
+            +"<label for='handle' class='col-form-label'>Handle:</label>"
+            +"<input type='text' class='form-control' id='handle' value="+data.val().handle+">"
+            +"</div>");
+        })
+
+        $("#saveChanges").attr("data-key",currKey);
+        $("#saveChanges").attr("data-tableType","roster/");
+        $("#delete").attr("data-key",currKey)
+        $("#delete").attr("data-tableType","roster/");
     });
+
+    // Save changes from modal form
+    $(document).on("click","#saveChanges", function(event){
+        event.preventDefault();
+        let currKey = $(this).attr("data-key");
+        let tableType = $(this).attr("data-tableType");
+        let itemRef=database.ref(tableType+currKey);
+
+        if (tableType === "roster/"){
+
+            // Get data from modal
+            newPlayer.firstName = $("#firstName").val().trim();
+            newPlayer.lastName = $("#lastName").val().trim();
+            newPlayer.grade= $("#grade").val().trim();
+            newPlayer.handle = $("#handle").val().trim();
+
+            // Update entry in database
+            itemRef.set({
+                firstName: newPlayer.firstName,
+                lastName: newPlayer.lastName,
+                grade: newPlayer.grade,
+                handle: newPlayer.handle
+            })
+
+            // Update entry on DOM
+            $("#"+currKey).html("<td>" + newPlayer.firstName + "</td>" 
+            + "<td>" + newPlayer.lastName + "</td>" 
+            + "<td>" + newPlayer.grade + "</td>" 
+            + "<td>" + newPlayer.handle + "</td>"
+            + "<td><i class='far fa-edit edit redit hover-outline' data-toggle='modal' data-target='#myModal' data-key="+currKey+"></i></td>")        
+        } else if (tableType === "schedule/"){
+
+            // Get data from modal
+            newMatch.date = $("#date").val().trim();
+            newMatch.opponent = $("#opponent").val().trim();
+            newMatch.time= $("#time").val().trim();
+            newMatch.location = $("#location").val().trim();
+            newMatch.notes = $("#notes").val().trim();
+            newMatch.score = $("#score").val().trim();
+
+            console.log("save: "+currKey)
+            console.log(tableType+currKey)
+            console.log("opponent: "+newMatch.opponent)
+            // Update entry in database
+            itemRef.set({
+                date: newMatch.date,
+                opponent: newMatch.opponent,
+                time: newMatch.time,
+                location: newMatch.location,
+                notes: newMatch.notes,
+                score: newMatch.score
+            })
+
+            // Update entry on DOM
+            $("#"+currKey).html("<td>" + newMatch.date + "</td>" 
+            + "<td>" + newMatch.opponent + "</td>" 
+            + "<td>" + newMatch.time + "</td>" 
+            + "<td>" + newMatch.location + "</td>"
+            + "<td>" + newMatch.notes + "</td>"
+            + "<td>" + newMatch.score + "</td>"
+            + "<td><i class='far fa-edit edit sedit hover-outline' data-toggle='modal' data-target='#myModal' data-key="+currKey+"></i></td>")        
+        }
+    });
+
+    // Delete entry
+    $(document).on("click","#delete", function(event){
+        event.preventDefault();
+        let currKey = $(this).attr("data-key");
+        let tableType = $(this).attr("data-tableType");
+        let itemRef=database.ref(tableType+currKey);
+        itemRef.remove();
+        $("#"+currKey).remove();
+    })
 
     // hides video player and stops it on any click other than link
     $(document).mouseup(function(e) {
@@ -197,8 +332,6 @@ var config = {
                 console.log(err); // send the error notifications to console
             }
         });
-
-
         
 
 
