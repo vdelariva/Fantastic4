@@ -408,32 +408,40 @@ var config = {
 //$(document).on('click','#CSStransforms',function(event){
 // added on ready to fire on page load, remove comment from line above yo use on click and comment out on ready
 $(document).ready(function(){
-  var CSStransforms = anime({
-    targets: '.tennisball',
-    translateX: [
-   { value: 400, duration: 1000, delay: 500, elasticity: 0 },
-   { value: 0, duration: 1000, delay: 500, elasticity: 0}
- ],
- translateY: [
-   { value: -150, duration: 500, elasticity: 100 },
-   { value: 100, duration: 500, delay: 1000, elasticity: 100 },
-   { value: 0, duration: 500, delay: 1000, elasticity: 100 }
- ],
- scaleX: [
-   { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-   { value: 1, duration: 900, elasticity: 300 },
-   { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-   { value: 1, duration: 900, elasticity: 300 }
- ],
- scaleY: [
-   { value: [1.75, 1], duration: 500 },
-   { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-   { value: 1, duration: 450 },
-   { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-   { value: 1, duration: 450 }
- ],
- // loop: true
-})
+    moveBall();
+
+$("#CSStransforms").on('click', function(event){
+    moveBall();
+  });
+
 });
 
     //instagram token = 2990260460.3146e20.78ee043027df4f24932d8eecb70e0316
+function moveBall() {
+    var CSStransforms = anime({
+        targets: '.tennisball',
+        translateX: [
+       { value: 400, duration: 1000, delay: 500, elasticity: 0 },
+       { value: 0, duration: 1000, delay: 500, elasticity: 0}
+     ],
+     translateY: [
+       { value: -150, duration: 500, elasticity: 100 },
+       { value: 100, duration: 500, delay: 1000, elasticity: 100 },
+       { value: 0, duration: 500, delay: 1000, elasticity: 100 }
+     ],
+     scaleX: [
+       { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+       { value: 1, duration: 900, elasticity: 300 },
+       { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+       { value: 1, duration: 900, elasticity: 300 }
+     ],
+     scaleY: [
+       { value: [1.75, 1], duration: 500 },
+       { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+       { value: 1, duration: 450 },
+       { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+       { value: 1, duration: 450 }
+     ],
+     // loop: true
+    })
+}

@@ -86,7 +86,7 @@ a.navbar-brand {
 
 /* added for youtube links */
 /*______________________________________________________*/
-.vid_btn {
+/* .vid_btn {
   width: 200px;
   background: #f26C23;
   height: 50px;
@@ -100,7 +100,8 @@ a.navbar-brand {
 .vid_btn:hover {
   font-weight: bold;
   background: rgb(231, 95, 22);
-}
+} */
+
 
 /* added for event links */
 /*______________________________________________________*/
@@ -130,14 +131,21 @@ a.event_link {
   display: inline-block;
   width: 15%;
   margin-right: 1rem;
+}
+
 #news-text-area {
   width: 400px;
 }
 
 
 iframe {
+  display: block;
   margin-top: 50px;
+  /* width: 40vw;
+  height: 20vw; */
 }
+
+
 
 .hover-outline:hover {
   outline: 5px solid #f26C23;
