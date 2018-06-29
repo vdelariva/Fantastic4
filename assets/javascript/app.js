@@ -69,7 +69,7 @@ var config = {
     });
 
     // Player added to database
-    database.ref("roster/").on("child_added", function(snapshot){ 
+    database.ref("roster/").orderByChild("lastName").on("child_added", function(snapshot){ 
         // Display team player
         $("#roster > tbody").append("<tr id="+snapshot.key+">"
         + "<td>" + snapshot.val().firstName + "</td>"
@@ -80,7 +80,7 @@ var config = {
     });
 
     // Match added to database
-    database.ref("schedule/").on("child_added", function(snapshot){ 
+    database.ref("schedule/").orderByChild("date").on("child_added", function(snapshot){ 
         // Display team schedule
         $("#schedule > tbody").append("<tr id="+snapshot.key+">"
         + "<td>" + snapshot.val().date + "</td>"
