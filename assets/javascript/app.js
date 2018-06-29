@@ -286,7 +286,7 @@ var config = {
         maxResults: 10,
         q: ""
     }
-    $("iframe").hide();
+    // $("iframe").hide();
     $(".vid_btn").click(function(){
         searchObj.q = $(this).attr("data-term");
         keyWordsearch();
@@ -296,17 +296,17 @@ var config = {
 // instagram api
 //-------------------------------------------------------------------------------
 
-        var newImages = 0;
+        // var newImages = 0;
     
-        $.ajax({
-            url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
-            dataType: 'jsonp',
-            type: 'GET',
-            success: refreshImg,
-            error: function(data){
-                console.log(err); // send the error notifications to console
-            }
-        });
+        // $.ajax({
+        //     url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
+        //     dataType: 'jsonp',
+        //     type: 'GET',
+        //     success: refreshImg,
+        //     error: function(data){
+        //         console.log(err); // send the error notifications to console
+        //     }
+        // });
 
 
    function keyWordsearch(){
@@ -323,8 +323,12 @@ var config = {
        var randomVid = Math.floor(Math.random() * 10);
        var randomVidId = response.items[randomVid].id.videoId;
        var vidSrc = `https://www.youtube.com/embed/${randomVidId}?autoplay=1`;
-       $("iframe").attr("src", vidSrc);
-       $("iframe").show();
+    //    debugger
+       $("#video").html("<iframe class='py-2' width='100%' src="+vidSrc+"></iframe>");
+    //    $("#video").text("Stuff!")
+       console.log("video: "+$('#video'))
+    //    $("iframe").attr("src", vidSrc);
+    //    $("iframe").show();
        }).catch(function(err) {
        console.log(err)
        })

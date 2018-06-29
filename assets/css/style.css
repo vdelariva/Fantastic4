@@ -33,7 +33,6 @@ a.navbar-brand {
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   color: #ffffff;
-  width: 400px;
   margin-bottom: 0px;
 }
 
@@ -70,41 +69,15 @@ a.navbar-brand {
   color: #ffffff;
 }
 
-#resources {
-  width: 400px;
-}
-
 #teamresourcetitle, #teamnewstitle {
   background-color: #42454a;
   color: #ffffff;
 }
 
 #news {
-  width: 400px;
   margin-top: 20px;
 }
 
-/* added for youtube links */
-/*______________________________________________________*/
-/* .vid_btn {
-  width: 200px;
-  background: #f26C23;
-  height: 50px;
-  text-align: center;
-  color: white;
-  line-height: 50px;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.vid_btn:hover {
-  font-weight: bold;
-  background: rgb(231, 95, 22);
-} */
-
-
-/* added for event links */
-/*______________________________________________________*/
 .event_title {
   font-weight: bold;
 }
@@ -141,19 +114,10 @@ a.event_link {
   margin-right: 1rem;
 }
 
-#news-text-area {
-  width: 400px;
-}
-
-
 iframe {
   display: block;
-  margin-top: 50px;
-  /* width: 40vw;
-  height: 20vw; */
+  margin-top: 5px;
 }
-
-
 
 .hover-outline:hover {
   outline: 5px solid #f26C23;
