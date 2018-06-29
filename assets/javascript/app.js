@@ -337,7 +337,7 @@ var config = {
 
 //output the event data to a ul to hold the info
     function eventOutput(data) {
-        var output = $('<ul> class="event_holder"');
+        var output = $('#resources');
         data.results.forEach(function(item){
             var startDate = item.activityStartDate.split('T')[0];
             var prettyDate = moment(startDate).format("MMM Do, YYYY");
