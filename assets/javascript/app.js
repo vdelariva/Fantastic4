@@ -272,8 +272,9 @@ var config = {
     
 //Anime.js library
 
-$(document).on('click','#CSStransforms',function(event){
-
+//$(document).on('click','#CSStransforms',function(event){
+// added on ready to fire on page load, remove comment from line above yo use on click and comment out on ready
+$(document).ready(function(){
   var CSStransforms = anime({
     targets: '.tennisball',
     translateX: [

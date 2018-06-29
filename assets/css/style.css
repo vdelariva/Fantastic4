@@ -83,3 +83,51 @@ a.navbar-brand {
   width: 400px;
   margin-top: 20px;
 }
+
+/* added for youtube links */
+/*______________________________________________________*/
+.vid_btn {
+  width: 200px;
+  background: #f26C23;
+  height: 50px;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.vid_btn:hover {
+  font-weight: bold;
+  background: rgb(231, 95, 22);
+}
+
+/* added for event links */
+/*______________________________________________________*/
+.event_title {
+  font-weight: bold;
+}
+a.event_link {
+  color:#f26C23;
+}
+.event_link:hover {
+  text-decoration: none;
+  color: rgb(231, 95, 22);
+}
+
+/* added for event links */
+/*______________________________________________________*/
+
+#instagram_feed {
+  width: 100%;
+}
+
+.insta_image {
+  max-width: 100%;
+}
+
+.img_holder  li   {
+  display: inline-block;
+  width: 15%;
+  margin-right: 1rem;
+}
