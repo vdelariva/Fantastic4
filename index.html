@@ -6,6 +6,8 @@
   <!--Responsive viewport meta tag-->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--added to stop google from translating-->
+  <!-- <meta name="google" value="notranslate"> -->
   <!--Update title here-->
   <title>Washburn Tennis</title>
   <!--CSS Reset-->
@@ -52,7 +54,8 @@
 
 <!---->
 <div class="container">
-  <div class="row">
+  <div class="row pt-3">
+      <div id="instagram_feed"></div>
     <div class="col-md-7">
       <div class="panel-heading">Washburn Tennis // Team Roster<span id="roster-title"></span></div>
         <div class="table-responsive">
@@ -72,8 +75,38 @@
     </div>
 
     <div class="col-md-3">
-        <h6 class="lesson-title" id="lessons">Tennis Tutorials //</h6>
-        <iframe width="400" height="230" src='https://www.youtube.com/embed/aZj7DIEftPg?autoplay=1'></iframe>
+        <div class="dropdown">
+            <!-- <h6 class="lesson-title dropdown-header dropdown-toggle" data-toggle="dropdown" id="lessons">Tennis Tutorials //</h6> -->
+            <!-- <h6 class="dropdown-toggle lesson-title"  id="lessons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+            <h6 class="dropdown-toggle lesson-title"  id="lessons" data-toggle="dropdown" >
+              
+              Tennis Tutorials
+            </h6>
+            <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
+                  
+              
+                <iframe width="420" height="315"></iframe>
+            
+              <div class="dropdown-menu">
+                <button class="vid_btn dropdown-item" type= "button" data-term="tennis forehand">Forehand</button>
+                <button class="vid_btn dropdown-item" type= "button" data-term="tennis backhand">Backhand</button> 
+                <button class="vid_btn dropdown-item" type= "button" data-term="tennis volley">Volley</button>
+                <button class="vid_btn dropdown-item" type= "button" data-term="tennis serve">Serve</button>
+              <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+      <!-- <div class="dropdown-menu">
+        <h6 class="lesson-title dropdown-header" id="lessons">Tennis Tutorials //</h6> -->
+        <!-- <iframe width="400" height="230" src='https://www.youtube.com/embed/aZj7DIEftPg?autoplay=1'></iframe> -->
+        <!-- <iframe width="420" height="315"></iframe> -->
+
+        <!-- <div id="buttons">
+            <p class="vid_btn dropdown-item" data-term="tennis forehand">Forehand</p>
+            <p class="vid_btn dropdown-item" data-term="tennis backhand">Backhand</p> 
+            <p class="vid_btn dropdown-item" data-term="tennis volley">Volley</p>
+            <p class="vid_btn drop-item" data-term="tennis serve">Serve</p>
+        </div> -->
+      </div>
     </div>
   </div>
 
@@ -111,6 +144,7 @@
 
 
         <div class="list-group" id="news">
+            <div id = "event_container"></div>
           <a href="#" class="list-group-item list-group-item-action disable" id="teamnewstitle">
             Team News //
           </a>

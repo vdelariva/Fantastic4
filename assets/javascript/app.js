@@ -296,40 +296,17 @@ var config = {
 // instagram api
 //-------------------------------------------------------------------------------
 
-
-
+        var newImages = 0;
+    
         $.ajax({
             url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
             dataType: 'jsonp',
             type: 'GET',
-            success: function(data){
-                 console.log(data.data.length);
-                var startImagesAvail = data.data.length;
-                $("#instagram_feed").append(imageOutput(data.data));
-                setInterval(function() {
-                    $.ajax({
-                        url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
-                        dataType: 'jsonp',
-                        type: 'GET',
-                        success: function(data){
-                             console.log("from the interval" + data.data.length);
-                             var newImages = data.data.length;
-                            console.log("start img: " + startImagesAvail);
-                            console.log(newImages);
-
-
-                        },
-                        error: function(data){
-                            console.log(err); // send the error notifications to console
-                        }
-                    });
-
-                }, 10000);
-            },
+            success: refreshImg,
             error: function(data){
                 console.log(err); // send the error notifications to console
             }
-        });      
+        });
 
 
    function keyWordsearch(){
@@ -401,36 +378,70 @@ var config = {
         return output;
     }
 
+    function refreshImg(data) {
+            console.log(data.data.length);
+           var startImagesAvail = data.data.length;
+           $("#instagram_feed").append(imageOutput(data.data));
+           setInterval(function() {
+               $.ajax({
+                   url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
+                   dataType: 'jsonp',
+                   type: 'GET',
+                   success: function(data){
+                        console.log("from the interval" + data.data.length);
+                        
+                       console.log("start img: " + startImagesAvail);
+                       console.log(newImages);
+                           $("#instagram_feed").empty();
+                           $("#instagram_feed").append(imageOutput(data.data));
+                   },
+                   error: function(data){
+                       console.log(err); // send the error notifications to console
+                   }
+               });
+               
+           }, 10000);
+       }
+    
 //Anime.js library
 
-$(document).on('click','#CSStransforms',function(event){
+//$(document).on('click','#CSStransforms',function(event){
+// added on ready to fire on page load, remove comment from line above yo use on click and comment out on ready
+$(document).ready(function(){
+    moveBall();
 
-  var CSStransforms = anime({
-    targets: '.tennisball',
-    translateX: [
-   { value: 400, duration: 1000, delay: 500, elasticity: 0 },
-   { value: 0, duration: 1000, delay: 500, elasticity: 0}
- ],
- translateY: [
-   { value: -150, duration: 500, elasticity: 100 },
-   { value: 100, duration: 500, delay: 1000, elasticity: 100 },
-   { value: 0, duration: 500, delay: 1000, elasticity: 100 }
- ],
- scaleX: [
-   { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-   { value: 1, duration: 900, elasticity: 300 },
-   { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
-   { value: 1, duration: 900, elasticity: 300 }
- ],
- scaleY: [
-   { value: [1.75, 1], duration: 500 },
-   { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-   { value: 1, duration: 450 },
-   { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
-   { value: 1, duration: 450 }
- ],
- // loop: true
-})
+$("#CSStransforms").on('click', function(event){
+    moveBall();
+  });
+
 });
 
     //instagram token = 2990260460.3146e20.78ee043027df4f24932d8eecb70e0316
+function moveBall() {
+    var CSStransforms = anime({
+        targets: '.tennisball',
+        translateX: [
+       { value: 400, duration: 1000, delay: 500, elasticity: 0 },
+       { value: 0, duration: 1000, delay: 500, elasticity: 0}
+     ],
+     translateY: [
+       { value: -150, duration: 500, elasticity: 100 },
+       { value: 100, duration: 500, delay: 1000, elasticity: 100 },
+       { value: 0, duration: 500, delay: 1000, elasticity: 100 }
+     ],
+     scaleX: [
+       { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+       { value: 1, duration: 900, elasticity: 300 },
+       { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+       { value: 1, duration: 900, elasticity: 300 }
+     ],
+     scaleY: [
+       { value: [1.75, 1], duration: 500 },
+       { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+       { value: 1, duration: 450 },
+       { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+       { value: 1, duration: 450 }
+     ],
+     // loop: true
+    })
+}
