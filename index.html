@@ -16,6 +16,8 @@
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="shortcut icon" type="image/png" href="assets/images/flavicon.png"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
   <!--Firebase web App scrypt-->
   <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
@@ -26,24 +28,21 @@
 <!--Jumbotron-->
   <div class="jumbotron jumbotron-fluid" id="jumbotron">
     <div class="container">
-      <img src="assets/images/white-logo.png" id="logo">
+      <div id="CSStransforms">
+          <img src="assets/images/tennisball.png" class="tennisball"></img>
+        <img src="assets/images/white-logo.png" id="logo">
+      </div>
     </div>
   </div>
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg" id="nav" style="background-color: #42454a;">
-  <a class="navbar-brand">Washburn Tennis //</a>
+  <a class="navbar-brand" href="index.html">Washburn Tennis //</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-<!--Navbar-->
-<div class="collapse navbar-collapse" id="navbarText">
+
   <ul class="navbar-nav mr-auto">
-
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">Home</a>
-    </li>
-
     <li class="nav-item">
       <a class="nav-link" href="teammanager.html">Admin Login</a>
     </li>
@@ -73,7 +72,7 @@
     </div>
 
     <div class="col-md-3">
-      <!-- <h5 class="lesson-title" id="lessons">Tennis Lessons</h5> -->
+        <h6 class="lesson-title" id="lessons">Tennis Tutorials //</h6>
         <iframe width="400" height="230" src='https://www.youtube.com/embed/aZj7DIEftPg?autoplay=1'></iframe>
     </div>
   </div>
@@ -113,7 +112,7 @@
 
         <div class="list-group" id="news">
           <a href="#" class="list-group-item list-group-item-action disable" id="teamnewstitle">
-            Cras justo odio
+            Team News //
           </a>
           <a href="#" class="list-group-item list-group-item-action">New Links</a>
           <a href="#" class="list-group-item list-group-item-action">New Links</a>
@@ -145,8 +144,15 @@
   </div>
 </div>
 
+<!--[ footer ] -->
+<div id="footer">
+    <div class="container">
+        <p class="footer-block">Copyright &copy The Fantastic4 2018</p>
+    </div>
+</div>
 
-
+<!--Anime.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 <!--jQuery 3.3.1 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>

@@ -8,10 +8,10 @@ var config = {
     messagingSenderId: "361080289579"
     };
     firebase.initializeApp(config);
-    
+
     // Variable to reference the database
     const database = firebase.database();
-    
+
     // Player object
     var newPlayer = {
         firstName: "",
@@ -19,7 +19,7 @@ var config = {
         grade: "",
         handle:""
     }
-    
+
     // Match object
     var newMatch = {
         date: "",
@@ -29,7 +29,7 @@ var config = {
         notes: "",
         score: ""
     }
-    
+
     // Capture Add Player Button Click
     $("#player").on("click", function(event) {
         event.preventDefault();
@@ -37,7 +37,7 @@ var config = {
         newPlayer.lastName = $("#lastName").val().trim();
         newPlayer.grade= $("#grade").val().trim();
         newPlayer.handle = $("#handle").val().trim();
-     
+
         database.ref("roster/").push({
             firstName: newPlayer.firstName,
             lastName: newPlayer.lastName,
@@ -46,7 +46,7 @@ var config = {
         })
         $("form").trigger("reset");
     });
-    
+
     // Capture Add Match Button Click
     $("#match").on("click", function(event) {
         event.preventDefault();
@@ -56,7 +56,7 @@ var config = {
         newMatch.location = $("#location").val().trim();
         newMatch.notes = $("#notes").val().trim();
         newMatch.score = $("#score").val().trim();
-     
+
         database.ref("schedule/").push({
             date: newMatch.date,
             opponent: newMatch.opponent,
@@ -67,27 +67,25 @@ var config = {
         })
         $("form").trigger("reset");
     });
-    
+
     // Player added to database
     database.ref("roster/").on("child_added", function(snapshot){ 
-    
         // Display team player
-        $("#roster > tbody").append("<tr id="+snapshot.key+">" 
-        + "<td>" + snapshot.val().firstName + "</td>" 
-        + "<td>" + snapshot.val().lastName + "</td>" 
-        + "<td>" + parseInt(snapshot.val().grade) + "</td>" 
+        $("#roster > tbody").append("<tr id="+snapshot.key+">"
+        + "<td>" + snapshot.val().firstName + "</td>"
+        + "<td>" + snapshot.val().lastName + "</td>"
+        + "<td>" + parseInt(snapshot.val().grade) + "</td>"
         + "<td>" + snapshot.val().handle + "</td>"
         + "<td><i class='far fa-edit edit redit hover-outline' data-toggle='modal' data-target='#myModal' data-key="+snapshot.key+"></i></td></tr>")
     });
-    
+
     // Match added to database
     database.ref("schedule/").on("child_added", function(snapshot){ 
-    
         // Display team schedule
-        $("#schedule > tbody").append("<tr id="+snapshot.key+">" 
-        + "<td>" + snapshot.val().date + "</td>" 
-        + "<td>" + snapshot.val().opponent + "</td>" 
-        + "<td>" + snapshot.val().time + "</td>" 
+        $("#schedule > tbody").append("<tr id="+snapshot.key+">"
+        + "<td>" + snapshot.val().date + "</td>"
+        + "<td>" + snapshot.val().opponent + "</td>"
+        + "<td>" + snapshot.val().time + "</td>"
         + "<td>" + snapshot.val().location + "</td>"
         + "<td>" + snapshot.val().notes + "</td>"
         + "<td>" + snapshot.val().score + "</td>"
@@ -248,14 +246,14 @@ var config = {
     // hides video player and stops it on any click other than link
     $(document).mouseup(function(e) {
 	    var hideItem = $(".vid_btn");
-	
+
 	    // if the target of the click isn't the container nor a descendant of the container
-	    if (!hideItem.is(e.target) && hideItem.has(e.target).length === 0) 
+	    if (!hideItem.is(e.target) && hideItem.has(e.target).length === 0)
 	    {
             $("iframe").hide(400);
             $("iframe").attr("src", "");
 	    }
-	});	
+	});
 
 // Action.com api
 //------------------------------------------------------------------------------
@@ -299,7 +297,7 @@ var config = {
 //-------------------------------------------------------------------------------
 
 
-    
+
         $.ajax({
             url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
             dataType: 'jsonp',
@@ -318,21 +316,20 @@ var config = {
                              var newImages = data.data.length;
                             console.log("start img: " + startImagesAvail);
                             console.log(newImages);
-                            
-                            
+
+
                         },
                         error: function(data){
                             console.log(err); // send the error notifications to console
                         }
                     });
-                    
+
                 }, 10000);
             },
             error: function(data){
                 console.log(err); // send the error notifications to console
             }
-        });
-        
+        });      
 
 
    function keyWordsearch(){
@@ -362,7 +359,7 @@ var config = {
         var output = $('<ul> class="event_holder"');
         data.results.forEach(function(item){
             var startDate = item.activityStartDate.split('T')[0];
-            var prettyDate = moment(startDate).format("MMM Do, YYYY"); 
+            var prettyDate = moment(startDate).format("MMM Do, YYYY");
             var liTitle = $('<li class="event_title">');
             var liLink = $('<a>');
             liLink.attr("class", "event_link");
@@ -384,10 +381,10 @@ var config = {
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-    
+
         if (month.length < 2) month = '0' + month;
         if (day.length < 2) day = '0' + day;
-    
+
         return [year, month, day].join('-');
     }
 
@@ -404,5 +401,36 @@ var config = {
         return output;
     }
 
+//Anime.js library
+
+$(document).on('click','#CSStransforms',function(event){
+
+  var CSStransforms = anime({
+    targets: '.tennisball',
+    translateX: [
+   { value: 400, duration: 1000, delay: 500, elasticity: 0 },
+   { value: 0, duration: 1000, delay: 500, elasticity: 0}
+ ],
+ translateY: [
+   { value: -150, duration: 500, elasticity: 100 },
+   { value: 100, duration: 500, delay: 1000, elasticity: 100 },
+   { value: 0, duration: 500, delay: 1000, elasticity: 100 }
+ ],
+ scaleX: [
+   { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+   { value: 1, duration: 900, elasticity: 300 },
+   { value: 4, duration: 100, delay: 500, easing: 'easeOutExpo' },
+   { value: 1, duration: 900, elasticity: 300 }
+ ],
+ scaleY: [
+   { value: [1.75, 1], duration: 500 },
+   { value: 2, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+   { value: 1, duration: 450 },
+   { value: 1.75, duration: 50, delay: 1000, easing: 'easeOutExpo' },
+   { value: 1, duration: 450 }
+ ],
+ // loop: true
+})
+});
 
     //instagram token = 2990260460.3146e20.78ee043027df4f24932d8eecb70e0316
