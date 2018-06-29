@@ -116,6 +116,14 @@ a.event_link {
   color: rgb(231, 95, 22);
 }
 
+.event_date {
+  margin-bottom: 1rem;
+}
+
+.list-group li {
+  list-style: none;
+}
+
 /* added for event links */
 /*______________________________________________________*/
 
@@ -165,4 +173,19 @@ iframe {
 .modal-body {
   background-image: url(../images/white-logo.png);
   background-color: #f6f6f6;
+}
+
+/* form styles on admin page */
+/*-----------------------------------------------------------------------*/
+
+#player {
+  margin-bottom: 2rem;
+}
+
+.btn-blue {
+  background-color: #2F5BA3;
+}
+
+.btn-blue:hover {
+  background-color: #27275B;
 }
