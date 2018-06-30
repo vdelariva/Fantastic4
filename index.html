@@ -53,9 +53,11 @@
 </nav>
 
 <!---->
-<div class="container">
+<div class="container-fluid">
   <div class="row py-2">
-    <div id="instagram_feed"></div>
+    <div class="col">
+      <div id="instagram_feed"></div>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-9">
@@ -92,6 +94,15 @@
           <!-- <iframe class="py-2" width="100%"></iframe> -->
         </div>
       </div>
+      <div class="card border-0 bg-transparent mt-2">
+        <div class="card-body p-0">
+          <div class="list-group" id="resources">
+            <a href="#" class="list-group-item list-group-item-action disable mb-2" id="teamresourcetitle">
+              Upcoming Boys Events
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
     
@@ -115,16 +126,8 @@
           </table>
         </div>
     </div>
-
-    <div class="col-md-3">
-        <div class="list-group" id="resources">
-          <a href="#" class="list-group-item list-group-item-action disable mb-2" id="teamresourcetitle">
-            Upcoming Boys Events
-          </a>
-        </div>
-    </div>
-
   </div>
+  
   <!-- Modal -->
   <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -143,7 +146,6 @@
           <button type="button" class="btn" data-dismiss="modal">Cancel</button>
         </div>
       </div>
-  
     </div>
   </div>
 </div>
