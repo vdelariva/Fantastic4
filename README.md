@@ -53,4 +53,11 @@ Resources - Upcoming tournaments, instructional videos, team photos
 
 #### Developer Notes ####
 
-*
+* User has the ability to add/update/delete players and matches to the roster and schedule tables by selecting the edit icon next to each entry.
+* Some input validation on Date, Grade and Time fields
+* Used moment.js to convert ISO date to local date for display purposes. Also used to set active.com API start date query to identify upcoming tournaments.
+* Used single modal to edit a player or match entry. When edit icon is clicked, the code determines which table is being updated and populates the modal based on a tag on the edit icon.
+* Tennis ball in jumbotron will circumnavigate the logo upon the document being loaded and when clicked.
+* A new photo will load when a photo is added to personal instragram account (currently tied to single account - future feature to allow registered users to post a new photo and have a photo gallery with older postings)
+* When a tournament is selected, it will take the user to the official tournament website.
+* Further investigate active.com API. Team struggled to load tournaments closer to city specified in the query search.For some reason, it thinks Omaha, NE is close to Mpls, MN...
