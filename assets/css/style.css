@@ -18,7 +18,7 @@ a.navbar-brand {
 }
 
 .panel-heading {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding: 10px 0px 10px 10px;
   background-color: #f26C23;
   border-top-left-radius: 6px;
@@ -27,7 +27,7 @@ a.navbar-brand {
 }
 
 #lessons {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   padding: 14px 0px 12px 20px;
   background-color: #42454a;
   border-top-left-radius: 6px;

@@ -81,9 +81,12 @@ var config = {
 
     // Match added to database
     database.ref("schedule/").orderByChild("date").on("child_added", function(snapshot){ 
+        // convert ISO date to local date format
+        let d = new Date(snapshot.val().date);
+        var n = d.toLocaleDateString();
         // Display team schedule
         $("#schedule > tbody").append("<tr id="+snapshot.key+">"
-        + "<td>" + snapshot.val().date + "</td>"
+        + "<td>" + n + "</td>"
         + "<td>" + snapshot.val().opponent + "</td>"
         + "<td>" + snapshot.val().time + "</td>"
         + "<td>" + snapshot.val().location + "</td>"
@@ -104,7 +107,7 @@ var config = {
         $(".modal-body").html("<form>"
             +"<div class='form-group'>"
             +"<label for='date' class='col-form-label'>Date:</label>"
-            +"<input type='text' class='form-control' id='date' value="+data.val().date+">"
+            +"<input type='date' class='form-control' id='date' value="+data.val().date+">"
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='opponent' class='col-form-label'>Opponent:</label>"
@@ -112,7 +115,7 @@ var config = {
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='time' class='col-form-label'>Time:</label>"
-            +"<input type='text' class='form-control' id='time' value="+data.val().time+">"
+            +"<input type='time' class='form-control' id='time' value="+data.val().time+">"
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='location' class='col-form-label'>Location:</label>"
@@ -125,9 +128,8 @@ var config = {
             +"<div class='form-group'>"
             +"<label for='score' class='col-form-label'>Score:</label>"
             +"<input type='text' class='form-control' id='score' value="+data.val().score+">"
-            +"</div>");
-            console.log("score: "+data.val().score)
-
+            +"</div></form>");
+            // console.log("score: "+data.val().score)
         })
 
         $("#saveChanges").attr("data-key",currKey);
@@ -156,7 +158,7 @@ var config = {
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='grade' class='col-form-label'>Grade:</label>"
-            +"<input type='text' class='form-control' id='grade' value="+data.val().grade+">"
+            +"<input type='number' class='form-control' id='grade' value="+data.val().grade+">"
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='handle' class='col-form-label'>Handle:</label>"
@@ -200,7 +202,6 @@ var config = {
             + "<td>" + newPlayer.handle + "</td>"
             + "<td><i class='far fa-edit edit redit hover-outline' data-toggle='modal' data-target='#myModal' data-key="+currKey+"></i></td>")        
         } else if (tableType === "schedule/"){
-
             // Get data from modal
             newMatch.date = $("#date").val().trim();
             newMatch.opponent = $("#opponent").val().trim();
@@ -209,9 +210,6 @@ var config = {
             newMatch.notes = $("#notes").val().trim();
             newMatch.score = $("#score").val().trim();
 
-            console.log("save: "+currKey)
-            console.log(tableType+currKey)
-            console.log("opponent: "+newMatch.opponent)
             // Update entry in database
             itemRef.set({
                 date: newMatch.date,
@@ -296,17 +294,17 @@ var config = {
 // instagram api
 //-------------------------------------------------------------------------------
 
-        // var newImages = 0;
+        var newImages = 0;
     
-        // $.ajax({
-        //     url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
-        //     dataType: 'jsonp',
-        //     type: 'GET',
-        //     success: refreshImg,
-        //     error: function(data){
-        //         console.log(err); // send the error notifications to console
-        //     }
-        // });
+        $.ajax({
+            url: 'https://api.instagram.com/v1/users/self/media/recent?access_token=2990260460.3146e20.78ee043027df4f24932d8eecb70e0316', // or /users/self/media/recent for Sandbox
+            dataType: 'jsonp',
+            type: 'GET',
+            success: refreshImg,
+            error: function(data){
+                console.log(err); // send the error notifications to console
+            }
+        });
 
 
    function keyWordsearch(){
@@ -370,7 +368,7 @@ var config = {
     }
 
     function imageOutput(data) {
-        var output = $('<ul class="img_holder">');
+        var output = $('<ul class="img_holder d-flex justify-content-center">');
         data.forEach(function(item){
             //console.log(item.images.standard_resolution.url);
             var liImage = $('<li>');
