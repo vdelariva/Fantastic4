@@ -18,14 +18,13 @@ Provide Team information & Resources
 
 ## Implementation ##
 
-* Admin page to enter team players and match schedule
-* Team schedule - date/opponent/time/location/score
-* Team Roster - name/grade/handle
-* Resources: 
-
-1. Upcoming Tournaments
-1. Instructional videos for different tennis strokes - user selected (forehand/backhand/serve/volley)
-1. Share team photos via Instagram account
+1. Admin page to enter team players and match schedule
+1. Team schedule - date/opponent/time/location/score
+1. Team Roster - name/grade/handle
+1. Resources: 
+   * Upcoming Tournaments
+   * Instructional videos for different tennis strokes - user selected (forehand/backhand/serve/volley)
+   * Share team photos via Instagram account
 
 ## Tools ##
 
@@ -46,11 +45,12 @@ Provide Team information & Resources
 
 ## Future Enhancements ##
 
-* Public and Private Webpages
-..* Public webpage to display team schedule and other general team information
-..* Private webpages for players/parents/guardians that shows the roster and contact information and a website for the team administrator to enter manage team roster and schedule. This would require login authentication for both private websites.
-* Message board for team members to post information such as carpool availability, info regarding out of town tournaments, match highlights/recaps
-* Email and text message capability to notify members of important information, such as match day location changes due to inclement weather
+1. Message board for team members to post information such as carpool availability, info regarding out of town tournaments, match highlights/recaps
+1. Email and text message capability to notify members of important information, such as match day location changes due to inclement weather
+1. Public and Private Webpages
+   * Public webpage to display team schedule and other general team information
+   * Private webpages for players/parents/guardians that shows the roster and contact information and a website for the team administrator to enter manage team roster and schedule. This would require login authentication for both private websites.
+
 
 ## Developer Notes ##
 
