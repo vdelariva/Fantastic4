@@ -21,10 +21,10 @@ Provide Team information & Resources
 * Admin page to enter team players and match schedule
 * Team schedule - date/opponent/time/location/score
 * Team Roster - name/grade/handle
-* Resources:
-..* Upcoming Tournaments
-..* Instructional videos for different tennis strokes - user selected (forehand/backhand/serve/volley)
-..* Share team photos via Instagram account
+* Resources: 
+...1. Upcoming Tournaments
+...2. Instructional videos for different tennis strokes - user selected (forehand/backhand/serve/volley)
+...3. Share team photos via Instagram account
 
 ## Tools ##
 
