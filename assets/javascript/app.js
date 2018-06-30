@@ -98,12 +98,23 @@ var config = {
     // Edit the team schedule
     $(document).on("click",".sedit", function(event) {
         event.preventDefault();
+        
         let currKey = $(this).attr("data-key");
+        console.log("sedit: ")
+        console.log("key: " + currKey)
+        // debugger;
+
         let scheduleRef=database.ref("schedule/"+currKey);
+
 
         scheduleRef.once("value", function(data){
         // Display the modal form for editing matches
-        $(".modal-title").text("Edit Player");
+        // convert ISO date to local date format
+        // let d = new Date(data.val().date);
+        // var n = d.toLocaleDateString();
+        console.log("opponent: "+data.val().opponent)
+        
+        $(".modal-title").text("Edit Schedule");
         $(".modal-body").html("<form>"
             +"<div class='form-group'>"
             +"<label for='date' class='col-form-label'>Date:</label>"
@@ -111,7 +122,7 @@ var config = {
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='opponent' class='col-form-label'>Opponent:</label>"
-            +"<input type='text' class='form-control' id='opponent' value="+data.val().opponent+">"
+            +"<input type='text' class='form-control' id='opponent' value='"+data.val().opponent+"'>"
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='time' class='col-form-label'>Time:</label>"
@@ -127,7 +138,7 @@ var config = {
             +"</div>"
             +"<div class='form-group'>"
             +"<label for='score' class='col-form-label'>Score:</label>"
-            +"<input type='text' class='form-control' id='score' value="+data.val().score+">"
+            +"<input type='text' class='form-control' id='score' value='"+data.val().score+"'>"
             +"</div></form>");
             // console.log("score: "+data.val().score)
         })
@@ -141,12 +152,14 @@ var config = {
     // Edit the team roster
     $(document).on("click",".redit", function(event) {
         event.preventDefault();
+        console.log("redit: ")
+
         let currKey = $(this).attr("data-key");
         let rosterRef=database.ref("roster/"+currKey);
 
         rosterRef.once("value", function(data){
         // Display the modal form for editing players
-        $(".modal-title").text("Edit Match");
+        $(".modal-title").text("Edit Player");
         $(".modal-body").html("<form>"
             +"<div class='form-group'>"
             +"<label for='firstName' class='col-form-label'>First Name:</label>"
