@@ -22,6 +22,7 @@ Provide Team information & Resources
 * Team schedule - date/opponent/time/location/score
 * Team Roster - name/grade/handle
 * Resources: 
+
 ...1. Upcoming Tournaments
 ...2. Instructional videos for different tennis strokes - user selected (forehand/backhand/serve/volley)
 ...3. Share team photos via Instagram account
