@@ -1,6 +1,6 @@
 # Team Sport Manager
 
-#### Group Project Description: ####
+## Group Project Description: ##
 
 **Audience:**
 High school sport team - players & parents/guardians
@@ -16,7 +16,7 @@ Manage team roster - Add, remove team members
 View Team Schedule - List of previous and upcoming matches, scores for matches played, match location
 Resources - Upcoming tournaments, instructional videos, team photos
 
-#### Implementation ####
+## Implementation ##
 
 * Admin page to enter team players and match schedule
 * Team schedule - date/opponent/time/location/score
@@ -26,7 +26,7 @@ Resources - Upcoming tournaments, instructional videos, team photos
 ..* Instructional videos for different tennis strokes - user selected (forehand/backhand/serve/volley)
 ..* Share team photos via Instagram account
 
-#### Tools ####
+## Tools ##
 
 **APIs**
 * Action API to provide upcoming USTA tournaments
@@ -43,7 +43,7 @@ Resources - Upcoming tournaments, instructional videos, team photos
 **Database**
 * Firebase
 
-#### Future Enhancements ####
+## Future Enhancements ##
 
 * Public and Private Webpages
 ..* Public webpage to display team schedule and other general team information
@@ -51,7 +51,7 @@ Resources - Upcoming tournaments, instructional videos, team photos
 * Message board for team members to post information such as carpool availability, info regarding out of town tournaments, match highlights/recaps
 * Email and text message capability to notify members of important information, such as match day location changes due to inclement weather
 
-#### Developer Notes ####
+## Developer Notes ##
 
 * User has the ability to add/update/delete players and matches to the roster and schedule tables by selecting the edit icon next to each entry.
 * Some input validation on Date, Grade and Time fields
